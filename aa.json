@@ -1,0 +1,134 @@
+{
+  init: `{
+    //
+		// ==========================================
+		// OBYTE STACK GAME from Whistling Frogs
+		// ==========================================
+		// Written by Crypto Girl on 21 September 2019
+		// ==========================================
+		// Version: 0.9.3 - 7 October 2019
+		// ==========================================
+		// Can be used with OBYTE STACK GAME BOT v0.5, Pairing code:
+    // A/R1S1zX9R9KzN34IA5PCUbYbRB5WEDLEdVaNo/0s/Xu@obyte.org/bb-test#StackGame
+		// ===========================================
+		// The object of the game is to win the Stack.
+		// Users make bids. Min bid is 100,000 bytes.
+		// 1st bid initiates the Stack.
+		// Each subsequent bid starts the 50 sec timer.
+		// If more than 5 min has passed since the previous
+		// bid, the (stack - commission) is shared equally
+		// between the last bidder and the 1st bidder.
+		// The new stack is initiated with the current bid.
+		// A commission of 10,000 bytes is charged on each bid.
+		//  ===========================================
+    //
+    // setting game parameters
+    $bot_address = '4H2FOFBP7ST6BLYWHZ3GUV5PHY626AM4';
+    $commission_payout_threshold = 50000;
+    $commission = 10000;
+    $seed_amnt = 10000;
+    $min_bid_amnt = 100000;
+    $fees = 1000;
+    // setting game variables
+    $bid_amnt = trigger.output[[asset=base]];
+    $game_finished = (trigger.initial_address == $bot_address) otherwise false;
+    if ( ($game_finished == false) AND ($bid_amnt < $min_bid_amnt) ) bounce('Your bid is too small.');
+    $game_status = var['game_status'] otherwise 'not started';
+  }`,
+  messages: {
+    cases: [
+      { // case A: new Game
+        if: `{$game_finished == false AND $game_status == 'not started'}`,
+        messages: [
+          {
+            app: 'state',
+            state: `{
+              var['stack_amnt'] = $bid_amnt - $commission;
+              var['commission_pot'] += $commission - $fees;
+              var['author'] = trigger.initial_address;
+              var['leader'] = trigger.initial_address;
+              var['game_status'] = 'running';
+              response['message'] = 'Thank you for playing';
+            }`
+          }
+        ]
+      }, // case A
+      { // case B: Game is running
+        if: `{$game_finished == false AND $game_status == 'running'}`,
+        messages: [
+          {
+            app: 'state',
+            state: `{
+              var['stack_amnt'] += ($bid_amnt - $commission);
+              var['commission_pot'] += $commission;
+              var['leader'] = trigger.initial_address;
+              response['message'] = 'Thank you for playing';
+            }`
+          }
+        ]
+      }, // case B
+      { // case C: game is finished: make payments
+        if: `{$game_finished}`,
+        messages: [
+          { // Game finished: Payments
+            app: 'payment',
+            payload: { // payloads
+              cases: [ // payload cases
+                { // case 1: the game initiator is the same as the winner AND commission is payable
+                  if: `{(var['author'] == var['leader']) AND (var['commission_pot'] >= $commission_payout_threshold)}`,
+                  payload: {
+                    asset: 'base',
+                    outputs: [
+                      { address: '{ var['leader'] }', amount: '{ var['stack_amnt'] }' },
+                      { address: '{ $bot_address }', amount: '{ balance[base] - var['stack_amnt'] - $seed_amnt  }' }
+                    ]
+                  }
+                },
+                {  // case 2: the game initiator is the same as the winner AND no commission is payable
+                  if: `{(var['author'] == var['leader']) AND (var['commission_pot'] < $commission_payout_threshold)}`,
+                  payload: {
+                    asset: 'base',
+                    outputs: [ { address: '{ var['leader'] }', amount: '{ var['stack_amnt'] }' } ]
+                  }
+                },
+                {  // case 3: the game initiator is diff from the winner AND commission is payable
+                  if: `{(var['author'] != var['leader']) AND (var['commission_pot'] >= $commission_payout_threshold)}`,
+                  payload: {
+                    asset: 'base',
+                    outputs: [
+                      { address: '{ var['author'] }', amount: '{ var['stack_amnt'] / 2 }' },
+                      { address: '{ var['leader'] }', amount: '{ var['stack_amnt'] / 2 }' },
+                      { address: '{ $bot_address }', amount: '{ balance[base] - var['stack_amnt'] - $seed_amnt  }' }
+                    ]
+                  }
+                },
+                {  // case 4: the game initiator is diff from the winner AND no commission is payable
+                  if: `{(var['author'] != var['leader']) AND (var['commission_pot'] < $commission_payout_threshold)}`,
+                  payload: {
+                    asset: 'base',
+                    outputs: [
+                      { address: '{ var['author'] }', amount: '{ var['stack_amnt'] / 2 }' },
+                      { address: '{ var['leader'] }', amount: '{ var['stack_amnt'] / 2 }' }
+                    ]
+                  }
+                }
+              ] // payload cases
+            } // payloads
+          },  // Game finished: Payments
+          { // Game Finished: state
+            app: 'state',
+            state: `{ // game is finished
+              var['game_status'] = 'not started';
+              if (var['commission_pot'] >= $commission_payout_threshold) var['commission_pot'] = 0;
+              var['commission_pot'] += $bid_amnt;  // add money from the bot to the commission pot
+              var['stack_amnt'] = 0;
+              var['author'] = '';
+              var['leader'] = '';
+              response['message'] = 'Game finished.';
+            }`
+          } // Game Finished: state
+        ] // case C messages
+      } // case C
+    ] // cases
+  } // messages
+}

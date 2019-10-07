@@ -1,0 +1,12 @@
+{
+	"name": "obyte-stack-game",
+	"version": "1.0.0",
+	"description": "Obyte Stack Game Bot",
+	"main": "start.js",
+	"author": "Whistling Frogs",
+	"license": "???",
+	"dependencies": {
+		"ocore": "git+https://github.com/byteball/ocore.git#rocks-and-formulas",
+		"headless-obyte": "git+https://github.com/byteball/headless-obyte.git#aa"
+	}
+}
