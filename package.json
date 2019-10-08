@@ -4,7 +4,7 @@
 	"description": "Obyte Stack Game Bot",
 	"main": "start.js",
 	"author": "Whistling Frogs",
-	"license": "WF",
+	"license": "MIT",
 	"repository": "https://github.com/CriptoGirl/obyte-Stack-Game.git",
 	"dependencies": {
 		"ocore": "git+https://github.com/byteball/ocore.git#rocks-and-formulas",
