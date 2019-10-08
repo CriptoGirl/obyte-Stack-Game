@@ -11,11 +11,12 @@ exports.commissionRate = 10;  // 10%
 //exports.aaAddress = "D2OQP2GRBKU6LU7PQT4XXCGLCXMV4AQP"; // AA version 0.9.2 - 7 Nov 2019
 
 // Hosting environment
-exports.botWallet = 'QUONK7CUHPTGLNTZ6JE57SDVSFVDBCMM';    // hosting account
-exports.botPairingCode = 'AziMKfNVh+TNOpnFJ8qKh1DpywCyQWU20ALmX5zA5rAm@obyte.org/bb-test#StackGame';
-exports.aaAddress = "WT5FNKOS3GG6PCKGX3ONMVD4CTLNCA7I"; // AA version 1.0 - 8 Oct 2019
+exports.botWallet = 'QUONK7CUHPTGLNTZ6JE57SDVSFVDBCMM';    // hosting account 0AZJH343DDSDBJMI3EU5IFTKEYDJUEARG
 
-// ***************** AA HISTORY ******************** //             
+exports.botPairingCode = 'AziMKfNVh+TNOpnFJ8qKh1DpywCyQWU20ALmX5zA5rAm@obyte.org/bb-test#StackGame';
+exports.aaAddress = "TNVZKBRWBLG3BGYQOL3SGGPHLKEPERXR"; // AA version 1.0 - 8 Oct 2019
+
+// ***************** AA HISTORY ******************** //
 // Agent address: CXWUIKD2RBX3GUXNHWBUX7MN3N4NKYJ2
 // Agent address: WBSJUBBE4BQCPCEMSCQTU6BLHQZPYTKF
 // Agent address: SPD5USCXKNXQNDACOMBW2PEPNOITDWLT
@@ -25,5 +26,5 @@ exports.aaAddress = "WT5FNKOS3GG6PCKGX3ONMVD4CTLNCA7I"; // AA version 1.0 - 8 Oc
 
 // ******************* HOSTING AA ******************** //
 // 8 Oct 2019 11:32
-// Check in explorer: https://testnetexplorer.obyte.org/#2yon2/iel4azx5ydB0ZNryAXI90VyFMXE3DZ8iNW3qU=
-// Agent address: WT5FNKOS3GG6PCKGX3ONMVD4CTLNCA7I
+// Check in explorer: https://testnetexplorer.obyte.org/#wcYDQQYAVdquWt0iNjuvN7B0RRItCtFhh+VOhVx35uk=
+// Agent address: TNVZKBRWBLG3BGYQOL3SGGPHLKEPERXR
