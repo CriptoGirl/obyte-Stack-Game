@@ -1,39 +1,29 @@
 // Config setting for the game
 "use strict";
-//exports.aaAddress = "2GM46UFKFJAOWKZ56TJNWZLPOYHA2UNO"; // AA version 0.5d
-exports.aaAddress = "D2OQP2GRBKU6LU7PQT4XXCGLCXMV4AQP"; // AA version 0.9.2 - 7 Nov 2019
-
 exports.aaName = "Obyte Stack Game AA";
 exports.minBidAmount = 100000;  // 100,000 is about £0.02 to be increaded to £0.50
 exports.gameDuration = 60000;
 exports.notificationFrequency = 10000;
 exports.commissionRate = 10;  // 10%
-exports.botWallet = '4H2FOFBP7ST6BLYWHZ3GUV5PHY626AM4';
-exports.botPairingCode = 'A/R1S1zX9R9KzN34IA5PCUbYbRB5WEDLEdVaNo/0s/Xu@obyte.org/bb-test#StackGame';
+// local environment
+//exports.botWallet = '4H2FOFBP7ST6BLYWHZ3GUV5PHY626AM4';  // local account
+//exports.botPairingCode = 'A/R1S1zX9R9KzN34IA5PCUbYbRB5WEDLEdVaNo/0s/Xu@obyte.org/bb-test#StackGame';  // local
+//exports.aaAddress = "D2OQP2GRBKU6LU7PQT4XXCGLCXMV4AQP"; // AA version 0.9.2 - 7 Nov 2019
 
+// Hosting environment
+exports.botWallet = 'QUONK7CUHPTGLNTZ6JE57SDVSFVDBCMM';    // hosting account
+exports.botPairingCode = 'AziMKfNVh+TNOpnFJ8qKh1DpywCyQWU20ALmX5zA5rAm@obyte.org/bb-test#StackGame';
+exports.aaAddress = "WT5FNKOS3GG6PCKGX3ONMVD4CTLNCA7I"; // AA version 1.0 - 8 Oct 2019
 
-//Check in explorer: https://testnetexplorer.obyte.org/#rm6F3Q28YQjmKmtDQ4XmWIMer+tBWkjafXwjeDRgBc0=
-//Agent address: CXWUIKD2RBX3GUXNHWBUX7MN3N4NKYJ2
-
-//Check in explorer: https://testnetexplorer.obyte.org/#gLxEx9n2IhxYH5V8Of8JtCqjQLYOdSa+Quu3Sw6jSWs=
-//Agent address: WBSJUBBE4BQCPCEMSCQTU6BLHQZPYTKF
-
-//Check in explorer: https://testnetexplorer.obyte.org/#zcIgc9Ki/arT1OZu6m/DrdtmY+TmMIc6WFGWcVltudY=
-//Agent address: SPD5USCXKNXQNDACOMBW2PEPNOITDWLT
-
-// Check in explorer: https://testnetexplorer.obyte.org/#BOvCzALMW5i6c6iTm3phf3pfMM1NlwtqN1GnpwSaf08=
+// ***************** AA HISTORY ******************** //             
+// Agent address: CXWUIKD2RBX3GUXNHWBUX7MN3N4NKYJ2
+// Agent address: WBSJUBBE4BQCPCEMSCQTU6BLHQZPYTKF
+// Agent address: SPD5USCXKNXQNDACOMBW2PEPNOITDWLT
 // Agent address: XNSVQEYEJG6Y5MQ23PGLITEV6MHHDLWU
+// Agent address: LGLP4RZE366UGIOOUO4TGRNDUGJM25HU
+// Agent address: D2OQP2GRBKU6LU7PQT4XXCGLCXMV4AQP
 
-// LGLP4RZE366UGIOOUO4TGRNDUGJM25HU
-
-// 7 Oct 2019 09:37am
-//Check in explorer: https://testnetexplorer.obyte.org/#1SkTRngJKpz9ey04qe0uwfHJ/ZaSp5kapOWt2QInhtc=
-//Agent address: GPL2V5ETVX5JZ6ILHF2FGWP2ONK5JEUA
-
-// 7 Oct 2019 09:56am
-//Check in explorer: https://testnetexplorer.obyte.org/#P6ESColekkY26OVtCnegFeKGBGDtl+Sy6E4SNokNIK8=
-//Agent address: ZDMUB774KMNZ4CX7VDJ3CDHM45QLQTBZ
-
-// 7 Oct 2019 10:47am
-//Check in explorer: https://testnetexplorer.obyte.org/#gA7ld042ueOHpmcGQkhyZV2bNL3FOaFCkzFJLdqNZd0=
-//Agent address: D2OQP2GRBKU6LU7PQT4XXCGLCXMV4AQP
+// ******************* HOSTING AA ******************** //
+// 8 Oct 2019 11:32
+// Check in explorer: https://testnetexplorer.obyte.org/#2yon2/iel4azx5ydB0ZNryAXI90VyFMXE3DZ8iNW3qU=
+// Agent address: WT5FNKOS3GG6PCKGX3ONMVD4CTLNCA7I
