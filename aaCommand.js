@@ -26,21 +26,20 @@ function stopTheGame() {
   };
   headlessWallet.sendMultiPayment(opts, (err, unit) => {
     if (err){
-      //console.log('Error paying winnings for lottery id: ' + lotteryId);
+      console.log('Error paying winnings for lottery id: ' + lotteryId);
       device.sendMessageToDevice('0OJPHFMUUXRQGZKE2SVXFWVVTKSNXD5EQ', 'text',
-        'TEST: error sending data to AA: ' + err);
+        'ADMIN: error sending data to AA: ' + err);
       return;
     }
     else if (unit) {
       // console.log('STOP Command sent from the Bot to the AA, unit: ' + unit);
       device.sendMessageToDevice('0OJPHFMUUXRQGZKE2SVXFWVVTKSNXD5EQ', 'text',
-        'TEST: data sent to AA from bot, unit: ' + unit);
+        'ADMIN: data sent to AA from bot, unit: ' + unit);
     }
   });
 }
 
-// AA has to check who sent the message, so only my bot (i.e. its headless wallet) can
+// AA check who sent the message, so only this bot (i.e. its headless wallet) can
 // tell it to stop.
 
 exports.stopTheGame = stopTheGame;
-// https://developer.obyte.org/tutorials-for-newcomers/weather-oracle

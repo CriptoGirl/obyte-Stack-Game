@@ -39,18 +39,3 @@ eventBus.on('new_my_transactions', (arrUnits) => {
 });
 
 process.on('unhandledRejection', up => { throw up; });
-
-// *****************************************************
-//eventBus.on('aa_response_from_aa-' + game.aaAddress, (objAAResponse) => {
-	//device.sendMessageToDevice('0OJPHFMUUXRQGZKE2SVXFWVVTKSNXD5EQ', 'text',
-	//	'TEST: Response object Vars: ' + objAAResponse.response.responseVars);
-//});
-// payment is confirmed
-//eventBus.on('my_transactions_became_stable', (arrUnits) => {
-//	stableTransactions.stableTransactions(arrUnits);
-//});
-// TESTING MESSAGE
-//device.sendMessageToDevice('0OJPHFMUUXRQGZKE2SVXFWVVTKSNXD5EQ', 'text',
-//  'TEST: New Transactions');
-//
-//network.addLightWatchedAddress("ZSQCTCUIRPCIUHUQSR2SNZL7IRB7ORMW");

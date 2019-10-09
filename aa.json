@@ -1,33 +1,38 @@
+// Agent address: RQI2WE6EVSK6CY3NRNLHGQXUNJGZGU35
 {
   init: `{
-    //
-		// ==========================================
+    // =============== OBYSTACK AA =================
+		// =============================================
 		// OBYTE STACK GAME from Whistling Frogs
-		// ==========================================
-		// Written by Crypto Girl on 21 September 2019
-		// ==========================================
-		// Version: 0.9.3 - 7 October 2019
-		// ==========================================
-		// Can be used with OBYTE STACK GAME BOT v0.5, Pairing code:
-    // A/R1S1zX9R9KzN34IA5PCUbYbRB5WEDLEdVaNo/0s/Xu@obyte.org/bb-test#StackGame
-		// ===========================================
+		// =============================================
+		// First published by Crypto Girl on 21 Sep 2019
+		// =============================================
+		// Version: 1.0 - 9 Oct 2019
+		// =============================================
+		// For best game experience should be used with the OBYSTACK GAME BOT v1.0
+    // Pairing code:
+    // AziMKfNVh+TNOpnFJ8qKh1DpywCyQWU20ALmX5zA5rAm@obyte.org/bb-test#StackGame
+		// =============================================
 		// The object of the game is to win the Stack.
-		// Users make bids. Min bid is 100,000 bytes.
+		// Users make bids. Min bid is 1,000,000 bytes.
 		// 1st bid initiates the Stack.
-		// Each subsequent bid starts the 50 sec timer.
-		// If more than 5 min has passed since the previous
-		// bid, the (stack - commission) is shared equally
+		// Each subsequent bid starts the timer.
+    // The game ends when the timer rans out.
+		// The Stack (less commission) is shared equally
 		// between the last bidder and the 1st bidder.
-		// The new stack is initiated with the current bid.
-		// A commission of 10,000 bytes is charged on each bid.
-		//  ===========================================
+		// The new game is initiated by the next bid.
+		// A 1% commission (10,000 bytes) is charged on each bid.
+		// ============================================
+    // Visit https://whistling-frogs.herokuapp.com/obyStack
+    // for a full description of the game.
+    // ============================================
     //
     // setting game parameters
-    $bot_address = '4H2FOFBP7ST6BLYWHZ3GUV5PHY626AM4';
+    $bot_address = 'QUONK7CUHPTGLNTZ6JE57SDVSFVDBCMM';
     $commission_payout_threshold = 50000;
     $commission = 10000;
     $seed_amnt = 10000;
-    $min_bid_amnt = 100000;
+    $min_bid_amnt = 1000000;
     $fees = 1000;
     // setting game variables
     $bid_amnt = trigger.output[[asset=base]];
